@@ -18,7 +18,7 @@ export async function getEventsFromArtistName(artistName: string) {
 
   // Get collection from MongoDB
   const db = await getDb();
-  const eventListStore = db.collection("eventLists");
+  const eventListStore = db.collection<EventList>("eventLists");
 
   // Check if entry is in database store first
   const findOptions = {
@@ -26,6 +26,7 @@ export async function getEventsFromArtistName(artistName: string) {
   };
 
   const dbEventList = await eventListStore.findOne({ artistName: mbArtist.name }, findOptions);
+
   if (dbEventList)
     return dbEventList;
 
@@ -41,8 +42,13 @@ export async function getEventsFromArtistName(artistName: string) {
   } while (sfmResponsePage.itemsPerPage * (page - 1) < sfmResponsePage.total);
 
   // Add to database store
-  eventListStore.insertOne(eventList);
-  
+  const timestampedEventList = {
+    ...eventList,
+    timestamp: new Date()
+  };
+
+  eventListStore.insertOne(timestampedEventList);
+
   return eventList;
 }
 
