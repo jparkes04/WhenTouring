@@ -20,7 +20,27 @@ export default function Artist({ eventList }: { eventList: EventList}) {
 
 export const getServerSideProps: GetServerSideProps = (async (context) => {
   const artistName = decodeURIComponent(context.params?.name as string);
-  const eventList:EventList = await getEventsFromArtistName(artistName);
 
-  return { props: { eventList: eventList } };
+  try {
+    const eventList: EventList = await getEventsFromArtistName(artistName);
+    return { props: { eventList } };
+    
+  } catch (error) {
+    let destination = "/";
+
+    if (error instanceof Error) {
+      if (error.message.includes("SetlistFM error: 429")) {
+        destination = "/error429";
+      } else if (error.message.includes("No MBID found")) {
+        destination = "/error404";
+      }
+    }
+
+    return {
+      redirect: {
+        destination,
+        permanent: false,
+      },
+    };
+  }
 })
