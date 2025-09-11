@@ -1,11 +1,12 @@
 import { searchMusicBrainzArtists } from "../clients/musicbrainz";
+import { MBResponse } from "@/types/musicbrainz";
 
-export async function getMBIDFromArtistName(artistName: string) {
-  const json = await searchMusicBrainzArtists(artistName);
+export async function getMBDataFromArtistName(artistName: string) {
+  const mbResponse:MBResponse = await searchMusicBrainzArtists(artistName);
 
-  if (!json.artists?.length) {
+  if (!mbResponse.count) {
     throw new Error(`No MBID found for: ${artistName}`);
   }
 
-  return json.artists[0].id;
+  return mbResponse.artists[0];
 }
