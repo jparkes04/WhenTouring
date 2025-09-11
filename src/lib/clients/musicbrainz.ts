@@ -14,6 +14,8 @@ export async function searchMusicBrainzArtists(artistName: string) {
       },
     })
   );
+
   if (!res.ok) throw new Error(`Find MBID error: ${res.status}`);
+  
   return res.json();
 }
