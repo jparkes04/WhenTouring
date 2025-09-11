@@ -8,10 +8,9 @@ const uri = process.env.MONGO_DB_CONNECTION_STRING!;
 const client = new MongoClient(uri);
 
 async function run() {
-
     const database = client.db('when_touring');
-    const setlistPages = await database.createCollection("setlistPages");
-    await setlistPages.createIndex({ mbid:1, page:1 });
+    const setlistPages = await database.createCollection("eventLists");
+    await setlistPages.createIndex({ artistName:1 });
 
     await client.close();
 }
