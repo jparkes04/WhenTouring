@@ -2,7 +2,7 @@ import Bottleneck from "bottleneck";
 
 const limiter = new Bottleneck({
   maxConcurrent: 1,
-  minTime: 750
+  minTime: 850
 });
 
 export async function fetchEventsFromSetlistfm(mbid: string, page: number) {
