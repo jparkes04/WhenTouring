@@ -16,11 +16,11 @@ export default function EventMap( { eventList } : { eventList : EventList } ) {
         ">
           <Map
             initialViewState={{
-              longitude: -122.4,
-              latitude: 37.8,
+              longitude: 0,
+              latitude: 25,
               zoom: 1
             }}
-            mapStyle="https://api.maptiler.com/maps/streets-v2-dark/style.json?key="
+            mapStyle="https://api.maptiler.com/maps/streets-v2/style.json?key="
               // https://docs.maptiler.com/guides/maps-apis/maps-platform/how-to-protect-your-map-key/         
           >
             <Source
@@ -28,7 +28,7 @@ export default function EventMap( { eventList } : { eventList : EventList } ) {
               type="geojson"
               data={convertToGeoJson(eventList)}
               cluster={true}
-              clusterMaxZoom={14}
+              clusterMaxZoom={20}
               clusterRadius={50}
             >
               <Layer {...clusterLayer} />
