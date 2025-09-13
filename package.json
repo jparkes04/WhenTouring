@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google/genai": "^1.19.0",
     "bottleneck": "^2.19.5",
     "dotenv": "^17.2.2",
     "maplibre-gl": "^5.7.1",
