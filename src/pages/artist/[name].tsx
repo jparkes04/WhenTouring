@@ -1,19 +1,24 @@
 import { GetServerSideProps } from "next";
 import { getEventsFromArtistName } from "@/lib/services/setlistfm";
 import { EventList } from "@/types/eventList"
+import EventMap from "@/components/EventMap";
+
 
 export default function Artist({ eventList }: { eventList: EventList}) {
   return (
     <main>
-      <h2 className="text-xl lg:text-2xl">
-        Event History for {eventList.artistName}
+      <h2 className="text-xl lg:text-3xl text-center">
+        {eventList.artistName}
+      </h2>
+      <h2 className="text-md lg:text-lg text-center">
+        Concert History Map
       </h2>
 
-      <ul>
-        {eventList.events.map((event, i) => (
-          <li key={i}>{`${event.venue.name}, ${event.venue.city}, ${event.venue.country}`}</li>
-        ))}
-      </ul>
+      <EventMap eventList={eventList} />
+
+      <h2 className="text-xl lg:text-3xl text-center">
+        Predictions
+      </h2>
     </main>
   )
 }
