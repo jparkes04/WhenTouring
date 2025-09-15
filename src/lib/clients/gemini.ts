@@ -6,16 +6,16 @@ const ai = new GoogleGenAI({});
 export async function queryGemini(context : GeminiContext) : Promise<string> {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: `This JSON contains the concert history for artist ${context.artistName}.
-               Predict when they might next perform in or near the city of ${context.subjectCity} based on the patterns in this data.
-               Please keep your response brief highlighting the final prediction and basic reaosn as a full sentence.
-               This could be a date, range, or season for example.
-               Do not include accuracy disclaimers, they are elsewhere on my site.
-               Current date at time of requets is ${Date.now()}
-               ${JSON.stringify(context.events)}`,
+    contents: `*Historical* JSON concert data for artist ${context.artistName}. 
+    Predict when they might return to or near ${context.subjectCity} based on this. 
+    1 sentence response with prediction and reason. 
+    Date/Time of this request: ${new Date().toISOString().slice(0, 10)}.
+    Specify if City not recognised or ambiguous.
+    Do not include mark-up.
+    ${JSON.stringify(context.events)}`,
   });
 
   if (response.text)
     return response.text;
-  return "Unable to make a prediction at this time.";
+  return "Unable to make a prediction at this time, please try again later.";
 }

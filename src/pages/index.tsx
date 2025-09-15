@@ -14,11 +14,11 @@ export default function Home() {
 
   return (
     <main>
-      <p className="lg:text-xl pb-10">
+      <p className="lg:text-xl mb-10">
         Explore your favourite artists&apos; live concert history and estimate when they might return to your city.
       </p> 
 
-      <SearchBar handleSearch={handleSearch}/>
+      <SearchBar handleSearch={handleSearch} placeholder="Search artists..."/>
 
       {isLoading && <LoadingBar />}
     </main>
