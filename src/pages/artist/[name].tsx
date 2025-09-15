@@ -58,6 +58,10 @@ export default function Artist({ eventList }: { eventList: EventList}) {
       {prediction && <Prediction prediction={prediction}/>}
 
       <div className="mb-10"></div>
+      
+      <div className="flex justify-center">
+        <p>Source: <a href="https://www.setlist.fm/">concert setlists on setlist.fm</a></p>
+      </div>
     </main>
   )
 }

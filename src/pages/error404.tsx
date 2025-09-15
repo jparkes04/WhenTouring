@@ -1,4 +1,4 @@
-import HomeLink from "@/components/HomeLink";
+import InternalLink from "@/components/InternalLink";
 
 export default function Error429() {
   return (
@@ -9,8 +9,7 @@ export default function Error429() {
         We were unable to find the artist that you searched for.
       </p> 
 
-      <HomeLink />
+      <InternalLink label="Return to Home" href="/"/>
     </main>
   )
 }
-
