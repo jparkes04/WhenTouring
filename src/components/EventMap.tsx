@@ -5,6 +5,7 @@ import { convertToGeoJson } from "@/lib/map-utils/convert-to-geojson";
 import { EventList } from '@/types/eventList';
 
 export default function EventMap( { eventList } : { eventList : EventList } ) {
+  const key = process.env.MAPTILER_KEY!
   return (
       <div className="my-8 h-120 md:h-150">
         <div className="absolute
@@ -20,7 +21,7 @@ export default function EventMap( { eventList } : { eventList : EventList } ) {
               latitude: 25,
               zoom: 1
             }}
-            mapStyle="https://api.maptiler.com/maps/streets-v2/style.json?key="
+            mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`}
               // https://docs.maptiler.com/guides/maps-apis/maps-platform/how-to-protect-your-map-key/         
           >
             <Source
