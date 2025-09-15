@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="sticky top-[100vh] text-center">
-        <p className="py-5">About</p>
-        {/* Replace with link when ready... */}
+      <div className="py-5">
+        <Link href={"/about"}>About</Link>
+      </div>
     </footer>
   )
 }
