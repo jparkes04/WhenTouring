@@ -7,7 +7,7 @@ const limiter = new Bottleneck({
 
 export async function searchMusicBrainzArtists(artistName: string) {
   const res = await limiter.schedule( () =>
-    fetch(`https://musicbrainz.org/ws/2/artist?query=${encodeURIComponent(artistName)}~&limit=1`, {
+    fetch(`https://musicbrainz.org/ws/2/artist?query=${encodeURIComponent(artistName)}~&limit=1&dismax=true`, {
       headers: {
           "User-Agent":  `${process.env.APP_NAME}/${process.env.APP_VERSION} (${process.env.CONTACT_ADDRESS})`,
           "Accept": "application/json"
