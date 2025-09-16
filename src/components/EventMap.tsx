@@ -5,7 +5,7 @@ import { convertToGeoJson } from "@/lib/map-utils/convert-to-geojson";
 import { EventList } from '@/types/eventList';
 
 export default function EventMap( { eventList } : { eventList : EventList } ) {
-  const key = process.env.MAPTILER_KEY!
+  const key = process.env.NEXT_PUBLIC_MAPTILER_KEY!
   return (
       <div className="my-8 h-120 md:h-150">
         <div className="absolute
