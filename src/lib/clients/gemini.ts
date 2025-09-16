@@ -17,5 +17,6 @@ export async function queryGemini(context : GeminiContext) : Promise<string> {
 
   if (response.text)
     return response.text;
-  return "Unable to make a prediction at this time, please try again later.";
+  
+  throw new Error("Gemini API Error");
 }
