@@ -43,10 +43,6 @@ export default function Artist({ eventList }: { eventList: EventList}) {
         Predictions
       </h2>
 
-      {/* <div className="flex justify-center">
-        <span className="bg-orange-100 text-orange-600 text-sm me-2 px-2.5 py-0.5 mt-2 rounded-sm">AI</span>
-      </div> */}
-
       <p className="lg:text-xl my-8">
         Predict when {eventList.artistName} might return to your city.
       </p> 
