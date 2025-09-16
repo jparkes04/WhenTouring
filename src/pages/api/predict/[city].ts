@@ -9,10 +9,10 @@ export default async function handler(
   const { city } = req.query;
 
   if (req.method === "POST") {
-    const eventList = req.body as EventList
+    const eventList = req.body as EventList;
     const response = await predictReturn(eventList, city as string);
-    res.status(200).json({ prediction: response })
+    res.status(200).json({ prediction: response });
+  } else {
+    res.status(405).end();   
   }
-
-  res.status(405).end();   
 }
