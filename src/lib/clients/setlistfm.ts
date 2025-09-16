@@ -8,6 +8,7 @@ const limiter = new Bottleneck({
 
 export async function fetchEventsFromSetlistfm(mbid: string, page: number) {
   let res;
+  let delay = 300;
   
   for (let i = 0; i < maxRetries; i++) {
     res = await limiter.schedule( () => 
@@ -21,6 +22,11 @@ export async function fetchEventsFromSetlistfm(mbid: string, page: number) {
 
     if (res.ok)
       return res.json();
+
+    if (i < maxRetries - 1) {
+      await new Promise(r => setTimeout(r, delay));
+      delay *= 2;
+    }
   }
 
   throw new Error(`Fetch from SetlistFM error: ${res?.status}`);
