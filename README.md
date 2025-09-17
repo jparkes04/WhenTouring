@@ -44,6 +44,7 @@ You need to configure the following environment variables to run the application
 - Tailwind CSS
 - [MapLibre](https://maplibre.org/maplibre-gl-js/docs/)
 - [react-map-gl](https://visgl.github.io/react-map-gl/)
+- [bottleneck](https://www.npmjs.com/package/bottleneck)
 - MongoDB
 - Maptiler
 - SetlistFM API
