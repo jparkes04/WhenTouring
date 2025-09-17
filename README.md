@@ -34,6 +34,10 @@ You need to configure the following environment variables to run the application
 
 `npm install`
 
+### Create database
+
+`node .\scripts\dbCreate.ts`
+
 ### Start the application
 
 `npm run dev`
